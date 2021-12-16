@@ -1,3 +1,5 @@
+![GitHub all releases](https://img.shields.io/github/downloads/hkgnp/logseq-toc-plugin/total)
+
 # Introduction
 
 Interactive (style-able), real-time rendering of Table of Contents.
