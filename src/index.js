@@ -60,7 +60,7 @@ const main = async () => {
       display: flex;
       flex-direction: column;
       padding: 1em;
-      border: 1px dashed white;
+      border: 1px dashed #C0C0C0;
     }
 
     .toc {
@@ -68,8 +68,8 @@ const main = async () => {
     }
 
     .headerOne {
-      border-top: 1px solid white;
-      border-bottom: 1px solid white;
+      border-top: 1px solid #C0C0C0;
+      border-bottom: 1px solid #C0C0C0;
       margin-top: 3px;
       padding: 0 1em;
     }
@@ -85,6 +85,10 @@ const main = async () => {
     .headerOne:hover, .headerTwo:hover {
       cursor: pointer;
       border: 1px dashed red;
+    }
+
+    .ti-arrow-bar-right:hover {
+      cursor: pointer;
     }
     `);
 
@@ -141,7 +145,14 @@ const main = async () => {
         }
       }
 
-      return `<div class="tocBoard"><h2 class="toc">Table of Contents</h2>${html}</div>`;
+      // Open TOC in right sidebar
+      logseq.provideModel({
+        openInRightSidebar() {
+          logseq.Editor.openInRightSidebar(uuid);
+        },
+      });
+
+      return `<div class="tocBoard"><h2 class="toc">Table of Contents <i data-on-click="openInRightSidebar" class="ti ti-arrow-bar-right"></i></h2>${html}</div>`;
     };
 
     if (!type.startsWith(':toc_')) return;
