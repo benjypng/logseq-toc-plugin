@@ -54,4 +54,4 @@ The CSS classes to change the look of the TOC are as follows. Please add them to
 # Future
 
 - [ ] Refactoring
-- [ ] Add ability for users to style the TOC themselves
+- [x] Open TOC in right sidebar
