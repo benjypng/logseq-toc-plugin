@@ -1,0 +1,27 @@
+{
+  "name": "logseq-toc-plugin",
+  "version": "1.0",
+  "description": "Interactive (style-able), real-time rendering of Table of Contents.",
+  "main": "dist/index.html",
+  "targets": {
+    "main": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build --no-source-maps src/index.html --public-url ./"
+  },
+  "keywords": [],
+  "author": "hkgnp",
+  "license": "MIT",
+  "dependencies": {
+    "@logseq/libs": "0.0.1-alpha.30"
+  },
+  "logseq": {
+    "id": "logseq-toc-plugin",
+    "title": "logseq-toc-plugin",
+    "icon": "./icon.svg"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
+}
