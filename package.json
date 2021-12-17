@@ -1,6 +1,6 @@
 {
   "name": "logseq-toc-plugin",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Interactive (style-able), real-time rendering of Table of Contents.",
   "main": "dist/index.html",
   "targets": {
