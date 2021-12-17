@@ -25,6 +25,38 @@ const tocCss = () => {
         list-style-position: inside; 
         padding: 0 1em;
       }
+
+      .headerThree {
+        margin-top: 3px;
+        display: list-item;          
+        list-style-type: disc;       
+        list-style-position: inside; 
+        padding: 0 1.4em;
+      }
+
+      .headerFour {
+        margin-top: 3px;
+        display: list-item;          
+        list-style-type: disc;       
+        list-style-position: inside; 
+        padding: 0 1.8em;
+      }
+
+      .headerFive {
+        margin-top: 3px;
+        display: list-item;          
+        list-style-type: disc;       
+        list-style-position: inside; 
+        padding: 0 2.2em;
+      }
+
+      .headerSix {
+        margin-top: 3px;
+        display: list-item;          
+        list-style-type: disc;       
+        list-style-position: inside; 
+        padding: 0 2.6em;
+      }
   
       .headerOne:hover, .headerTwo:hover {
         cursor: pointer;

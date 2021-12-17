@@ -2,13 +2,13 @@
 
 # Introduction
 
-Interactive (style-able), real-time rendering of Table of Contents from markdown headers (#, ##). Currently supports only (#, ##)
+Interactive (style-able), real-time rendering of Table of Contents from markdown headers (#, ##, ###, ####, #####, ######).
 
 ![](/screenshots/demo.gif)
 
 # Installation
 
-This plugin is currently not yet available on the marketplace. Please download a [release](https://github.com/hkgnp/logseq-toc-plugin/releases) and install it manually.
+This plugin is available on the marketplace. Just install it from there!
 
 # Changing Colours
 
@@ -53,5 +53,5 @@ The CSS classes to change the look of the TOC are as follows. Please add them to
 
 # Future
 
-- [ ] Refactoring
+- [x] Refactoring
 - [x] Open TOC in right sidebar
