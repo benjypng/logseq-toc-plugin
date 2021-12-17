@@ -60,4 +60,31 @@ const renderToc = (tocBlocks, slot, tocId) => {
   return `<div class="tocBoard"><h2 class="toc">Table of Contents <i data-on-click="openInRightSidebar" class="ti ti-arrow-bar-right"></i></h2>${html}</div>`;
 };
 
-export default { renderToc };
+const getTocBlocks = (childrenArr) => {
+  let tocBlocks = []; // Empty array to push filtered strings to
+  // Recursive function to map all headers in a linear array
+  const findAllHeaders = (childrenArr) => {
+    for (let a = 0; a < childrenArr.length; a++) {
+      if (childrenArr[a].content.startsWith('# ')) {
+        tocBlocks.push({
+          content: childrenArr[a].content,
+          uuid: childrenArr[a].uuid,
+        });
+      } else if (childrenArr[a].content.startsWith('## ')) {
+        tocBlocks.push({
+          content: childrenArr[a].content,
+          uuid: childrenArr[a].uuid,
+        });
+      }
+      if (childrenArr[a].children) {
+        findAllHeaders(childrenArr[a].children);
+      } else {
+        return;
+      }
+    }
+  };
+  findAllHeaders(childrenArr);
+  return tocBlocks;
+};
+
+export default { renderToc, getTocBlocks };

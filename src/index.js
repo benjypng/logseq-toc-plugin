@@ -31,30 +31,8 @@ const main = async () => {
       includeChildren: true,
     });
 
-    // Recursive function to map all headers in a linear array
-    let tocBlocks = []; // Empty array to push filtered strings to
-    const findAllHeaders = (childrenArr) => {
-      for (let a = 0; a < childrenArr.length; a++) {
-        if (childrenArr[a].content.startsWith('# ')) {
-          tocBlocks.push({
-            content: childrenArr[a].content,
-            uuid: childrenArr[a].uuid,
-          });
-        } else if (childrenArr[a].content.startsWith('## ')) {
-          tocBlocks.push({
-            content: childrenArr[a].content,
-            uuid: childrenArr[a].uuid,
-          });
-        }
-        if (childrenArr[a].children) {
-          findAllHeaders(childrenArr[a].children);
-        } else {
-          return;
-        }
-      }
-    };
     // Call function to create array of headers
-    findAllHeaders(tocHeader.children);
+    let tocBlocks = utils.getTocBlocks(tocHeader.children);
 
     // Provide style to TOC
     logseq.provideStyle(`${tocCss()}`);
