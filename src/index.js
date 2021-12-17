@@ -29,7 +29,7 @@ const main = async () => {
       includeChildren: true,
     });
 
-    // Function to map all headers in a linear array
+    // Recursive function to map all headers in a linear array
     let tocBlocks = []; // Empty array to push filtered strings to
     const findAllHeaders = (childrenArr) => {
       for (let a = 0; a < childrenArr.length; a++) {
@@ -112,9 +112,6 @@ const main = async () => {
       for (let i = 0; i < tocBlocks.length; i++) {
         const blockContent = tocBlocks[i].content;
 
-        // Check if block is not collapsed and if header 1
-        // Check if block is not collapsed and if header 2
-
         // Check if block is collapsed and if header 1
         if (
           blockContent.includes('collapsed:: true') &&
@@ -134,10 +131,12 @@ const main = async () => {
             3,
             blockContent.length - 16
           )}</div>`;
+          // Check if block is not collapsed and if header 1
         } else if (blockContent.startsWith('# ')) {
           html += `<div class="headerOne" data-slot-id=${slot}data-id="${tocId}" data-on-click="show${i}">${blockContent.substring(
             2
           )}</div>`;
+          // Check if block is not collapsed and if header 2
         } else if (blockContent.startsWith('## ')) {
           html += `<div class="headerTwo" data-slot-id=${slot}data-id="${tocId}" data-on-click="show${i}">${blockContent.substring(
             3
