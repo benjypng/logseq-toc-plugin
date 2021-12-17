@@ -42,7 +42,7 @@ const main = async () => {
       key: `${tocId}`,
       slot,
       reset: true,
-      template: utils.renderToc(tocBlocks, slot, tocId),
+      template: utils.renderToc(tocBlocks, slot, tocId, uuid),
     });
   });
 };

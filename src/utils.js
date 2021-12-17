@@ -46,7 +46,7 @@ const getTocBlocks = (childrenArr) => {
   return tocBlocks;
 };
 
-const renderToc = (tocBlocks, slot, tocId) => {
+const renderToc = (tocBlocks, slot, tocId, uuid) => {
   // Function to go to Block
   const goTo = (x) => {
     logseq.Editor.scrollToBlockInPage(x);
