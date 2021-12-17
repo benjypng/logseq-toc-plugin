@@ -4,8 +4,6 @@
 
 Interactive (style-able), real-time rendering of Table of Contents from markdown headers (#, ##). Currently supports only (#, ##)
 
-![](/screenshots/demo2.gif)
-
 ![](/screenshots/demo.gif)
 
 # Installation
