@@ -41,8 +41,8 @@ const getTocBlocks = (childrenArr) => {
       }
     }
   };
+
   findAllHeaders(childrenArr);
-  console.log(tocBlocks);
   return tocBlocks;
 };
 
