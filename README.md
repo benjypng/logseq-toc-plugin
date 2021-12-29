@@ -6,6 +6,10 @@ Interactive (style-able), real-time rendering of Table of Contents from markdown
 
 ![](/screenshots/demo.gif)
 
+## Block references as Section Headers
+
+![](/screenshots/demo2.gif)
+
 # Installation
 
 This plugin is available on the marketplace. Just install it from there!
