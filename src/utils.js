@@ -46,7 +46,7 @@ const getTocBlocks = (childrenArr) => {
   return tocBlocks;
 };
 
-const renderToc = (tocBlocks, slot, tocId, uuid) => {
+const renderToc = async (tocBlocks, slot, tocId, uuid) => {
   // Function to go to Block
   const goTo = (x) => {
     logseq.Editor.scrollToBlockInPage(x);
@@ -64,7 +64,21 @@ const renderToc = (tocBlocks, slot, tocId, uuid) => {
   // Create table of contents in html
   let html = '';
   for (let i = 0; i < tocBlocks.length; i++) {
-    const blockContent = tocBlocks[i].content;
+    let blockContent = tocBlocks[i].content;
+
+    if (blockContent.includes('((') && blockContent.includes('))')) {
+      // Get content if it's q block reference
+      const rxGetId = /\(([^(())]+)\)/;
+      const blockId = rxGetId.exec(blockContent);
+      const block = await logseq.Editor.getBlock(blockId[1], {
+        includeChildren: true,
+      });
+
+      blockContent = blockContent.replace(
+        `((${blockId[1]}))`,
+        block.content.substring(0, block.content.indexOf('id::'))
+      );
+    }
 
     // Header 1
     if (blockContent.startsWith('# ')) {
