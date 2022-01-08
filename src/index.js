@@ -22,6 +22,8 @@ const main = async () => {
     const uuid = payload.uuid;
     const [type] = payload.arguments;
 
+    if (!type.startsWith(':toc_')) return;
+
     // Deconstruct slot ID to make tocId
     const id = type.split('_')[1]?.trim();
     const tocId = `toc_${id}`;
@@ -37,7 +39,6 @@ const main = async () => {
     // Provide style to TOC
     logseq.provideStyle(`${tocCss()}`);
 
-    if (!type.startsWith(':toc_')) return;
     logseq.provideUI({
       key: `${tocId}`,
       slot,
