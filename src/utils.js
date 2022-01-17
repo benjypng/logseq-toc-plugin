@@ -137,7 +137,7 @@ const renderToc = async (tocBlocks, slot, tocId, uuid) => {
     },
   });
 
-  return `<div class="tocBoard"><h2 class="toc">Table of Contents <i data-on-click="openInRightSidebar" class="ti ti-arrow-bar-right"></i></h2>${html}</div>`;
+  return `<div class="tocBoard" data-slot-id="${tocId}" data-toc-id="${tocId}"><h2 class="toc">Table of Contents <i data-on-click="openInRightSidebar" class="ti ti-arrow-bar-right"></i></h2>${html}</div>`;
 };
 
 export default { getTocBlocks, renderToc };
