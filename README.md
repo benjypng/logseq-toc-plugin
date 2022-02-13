@@ -18,6 +18,8 @@ This plugin is available on the marketplace. Just install it from there!
 
 The CSS classes to change the look of the TOC are as follows. Please add them to your `custom.css` file to make the changes. Have fun!
 
+Do note that you have to add `!important` so as to override the existing plugin style.
+
 ```
    .tocBoard {
       display: flex;
