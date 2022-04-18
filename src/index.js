@@ -14,13 +14,14 @@ const main = async () => {
   logseq.useSettingsSchema([
     {
       key: "openBlockInNewPage",
-      type: boolean,
+      type: "boolean",
       default: true,
       description:
         "If set to true, clicking on a section header will open the block in a new page. If false, clicking on the section header will scroll to the block on the same page.",
       title: "Open block in new page",
     },
   ]);
+
   logseq.Editor.registerSlashCommand("toc", async () => {
     await logseq.Editor.insertAtEditingCursor(
       `{{renderer :toc_${uniqueIdentifier()}}}`
