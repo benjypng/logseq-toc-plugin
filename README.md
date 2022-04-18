@@ -1,4 +1,4 @@
-[:heart: Sponsor this project on Github](https://github.com/sponsors/hkgnp)
+[[:gift_heart: Sponsor this project on Github](https://github.com/sponsors/hkgnp) or [:coffee: Get me a coffee](https://www.buymeacoffee.com/hkgnp.dev) if you like this plugin!
 
 # Introduction
 
@@ -13,6 +13,12 @@ Interactive (style-able), real-time rendering of Table of Contents from markdown
 # Installation
 
 This plugin is available on the marketplace. Just install it from there!
+
+# Usage
+
+Simply type `/toc` and a Table of Contents will be generated based on the nested blocks under the Table of Contents block. Structure will follow the level of markdown headers.
+
+Depending on your plugin settings, clicking on the block will either open the block in a separate page **or** scroll to it on the same page.
 
 # Changing Colours
 
@@ -56,8 +62,3 @@ Do note that you have to add `!important` so as to override the existing plugin 
       cursor: pointer;
     }
 ```
-
-# Future
-
-- [x] Refactoring
-- [x] Open TOC in right sidebar
