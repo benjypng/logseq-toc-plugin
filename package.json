@@ -1,6 +1,6 @@
 {
   "name": "logseq-toc-plugin",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Interactive (style-able), real-time rendering of Table of Contents.",
   "main": "dist/index.html",
   "targets": {
@@ -13,7 +13,7 @@
   "author": "hkgnp",
   "license": "MIT",
   "dependencies": {
-    "@logseq/libs": "^0.0.1-alpha.35"
+    "@logseq/libs": "^0.0.6"
   },
   "logseq": {
     "id": "logseq-toc-plugin",
@@ -21,6 +21,6 @@
     "icon": "./icon.svg"
   },
   "devDependencies": {
-    "parcel": "^2.4.1"
+    "parcel": "^2.6.2"
   }
 }

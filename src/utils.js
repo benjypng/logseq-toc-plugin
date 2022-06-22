@@ -84,6 +84,10 @@ const renderToc = async (tocBlocks, slot, tocId, uuid, parentPage) => {
       );
     }
 
+    if (blockContent.includes("id:: ")) {
+      blockContent = blockContent.substring(0, blockContent.indexOf("id:: "));
+    }
+
     // Header 1
     if (blockContent.startsWith("# ")) {
       html += `<div class="headerOne" data-slot-id=${slot} data-id="${tocId}" data-on-click="show${i}">${
