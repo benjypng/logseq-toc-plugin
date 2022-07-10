@@ -70,6 +70,8 @@ const renderToc = async (tocBlocks, slot, tocId, uuid, parentPage) => {
   for (let i = 0; i < tocBlocks.length; i++) {
     let blockContent = tocBlocks[i].content;
 
+    blockContent = blockContent.substring(0, blockContent.indexOf("\n"));
+
     if (blockContent.includes("((") && blockContent.includes("))")) {
       // Get content if it's q block reference
       const rxGetId = /\(([^(())]+)\)/;
