@@ -7,8 +7,7 @@
     "main": false
   },
   "scripts": {
-    "dev": "rm -R dist && echo 'dist folder removed'; parcel build --no-source-maps --no-optimize src/index.html --public-url ./",
-    "build": "parcel build --no-source-maps src/index.html --public-url ./"
+    "build": "rm -R dist && echo 'dist folder removed'; parcel build --no-source-maps src/index.html --public-url ./"
   },
   "keywords": [],
   "author": "hkgnp",
