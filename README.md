@@ -4,27 +4,26 @@
 
 Interactive (style-able), real-time rendering of Table of Contents from markdown headers (#, ##, ###, ####, #####, ######).
 
-![](/screenshots/demo.gif)
-
-## Block references as Section Headers
-
-![](/screenshots/demo2.gif)
-
-# Installation
-
-This plugin is available on the marketplace. Just install it from there!
+![](/screenshots/pagetoc.gif)
 
 # Usage
 
-Simply type `/toc` and a Table of Contents will be generated based on the nested blocks under the Table of Contents block. Structure will follow the level of markdown headers.
+## Page-level table of contents
 
-Depending on your plugin settings, clicking on the block will either open the block in a separate page **or** scroll to it on the same page.
+This is enabled by default. When encountering a page with markdown headers, a table of contents will be displayed on the left sidebar. You may change the header text (e.g. `Table of Contents`) in the plugin settings.
+
+## Inserting inline table of contents
+
+Simply type `/Insert inline Table of Contents` and a Table of Contents will be generated based on the nested blocks under the Table of Contents block. Structure will follow the level of markdown headers.
+
+# Installation
+
+This plugin is available on the marketplace.
+
 
 # Changing Colours
 
-The CSS classes to change the look of the TOC are as follows. Please add them to your `custom.css` file to make the changes. Have fun!
-
-Do note that you have to add `!important` so as to override the existing plugin style.
+The CSS classes to change the look of the TOC are as follows. Please add them to your `custom.css` file to make the changes. Do note that you have to add `!important` so as to override the existing plugin style.
 
 ```
 .toc {
