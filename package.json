@@ -30,7 +30,9 @@
     ]
   },
   "dependencies": {
-    "@logseq/libs": "^0.0.15"
+    "@logseq/libs": "^0.0.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",

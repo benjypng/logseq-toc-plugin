@@ -1,4 +1,4 @@
-[[:gift_heart: Sponsor this project on Github](https://github.com/sponsors/hkgnp) or [:coffee: Get me a coffee](https://www.buymeacoffee.com/hkgnp.dev) if you like this plugin!
+[:gift_heart: Sponsor this project on Github](https://github.com/sponsors/benjypng) or [:coffee: Get me a coffee](https://www.buymeacoffee.com/hkgnp.dev) if you like this plugin!
 
 # Introduction
 
@@ -27,38 +27,39 @@ The CSS classes to change the look of the TOC are as follows. Please add them to
 Do note that you have to add `!important` so as to override the existing plugin style.
 
 ```
-   .tocBoard {
-      display: flex;
-      flex-direction: column;
-      padding: 1em;
-      border: 1px dashed #C0C0C0;
-    }
+.toc {
+  border: 1px solid #a2a9b1;
+  padding: 10px;
+  font-size: 80%;
+  margin: 10px;
+}
 
-    .toc {
-      margin-top: 0 !important;
-    }
+.toc-header {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-    .headerOne {
-      border-top: 1px solid #C0C0C0;
-      border-bottom: 1px solid #C0C0C0;
-      margin-top: 3px;
-      padding: 0 1em;
-    }
+.toc ul {
+  list-style-type: none;
+  margin-left: 0;
+}
 
-    .headerTwo {
-      margin-top: 3px;
-      display: list-item;
-      list-style-type: disc;
-      list-style-position: inside;
-      padding: 0 1em;
-    }
+.toc-item {
+  color: #0645ad;
+  text-decoration: none;
+  color: var(--lx-accent-11,var(--ls-link-text-color,hsl(var(--primary)/.8)));
+}
 
-    .headerOne:hover, .headerTwo:hover {
-      cursor: pointer;
-      border: 1px dashed red;
-    }
+.toc-item:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
-    .ti-arrow-bar-right:hover {
-      cursor: pointer;
-    }
+.indent-1 { margin-left: 0; }
+.indent-2 { margin-left: 1.5em; }
+.indent-3 { margin-left: 3em; }
+.indent-4 { margin-left: 4.5em; }
+.indent-5 { margin-left: 6em; }
+.indent-6 { margin-left: 7.5em; }
 ```

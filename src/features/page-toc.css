@@ -1,0 +1,35 @@
+.toc {
+  border: 1px solid #a2a9b1;
+  padding: 10px;
+  font-size: 80%;
+  margin: 10px;
+}
+
+.toc-header {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.toc ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.toc-item {
+  color: #0645ad;
+  text-decoration: none;
+  color: var(--lx-accent-11,var(--ls-link-text-color,hsl(var(--primary)/.8)));
+}
+
+.toc-item:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.indent-1 { margin-left: 0; }
+.indent-2 { margin-left: 1.5em; }
+.indent-3 { margin-left: 3em; }
+.indent-4 { margin-left: 4.5em; }
+.indent-5 { margin-left: 6em; }
+.indent-6 { margin-left: 7.5em; }
