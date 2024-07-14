@@ -25,8 +25,15 @@ const PageToc = ({
       if (!item.content) return
       // Get number of #
       const level = item.content.split(' ')[0]!.length
-      // Remove # from the content
-      const content = item.content.replace(/^#+\s/, '').split('id:: ')[0]
+      // Remove #, and other properties from the content
+      const content = item.content
+        .replace(
+          /#powerblocks-button|#powerblocks|collapsed:: true|collapsed:: false|^#+\s/g,
+          '',
+        )
+        .trim()
+        .split('id:: ')[0]
+
       // Reset nesting if stack is more than current level
       while (stack.length >= level) {
         stack.pop()
