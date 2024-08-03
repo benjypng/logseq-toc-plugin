@@ -28,14 +28,14 @@ const PageToc = ({
       // Remove #, and other properties from the content
       const content = item.content
         .replace(
-          /#powerblocks-button|#powerblocks|collapsed:: true|collapsed:: false|^#+\s/g,
+          /#powerblocks-button|#powerblocks|(.+?)::\s*([^\n]*)|^#+\s/g,
           '',
         )
         .trim()
-        .split('id:: ')[0]
 
       // Reset nesting if stack is more than current level
-      while (stack.length >= level) {
+      // @ts-ignore
+      while (stack.length > 0 && stack[stack.length - 1] >= level) {
         stack.pop()
       }
       stack.push(level)
