@@ -28,7 +28,6 @@
     }
   },
   "include": [
-    ".eslintrc.cjs",
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
