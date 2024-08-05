@@ -31,6 +31,8 @@ const PageToc = ({
           /#powerblocks-button|#powerblocks|(.+?)::\s*([^\n]*)|^#+\s/g,
           '',
         )
+        .replace(/\[([^\]]+)\]\(\[([^\)]+)\]\)/g, '$1')
+        .replace(/\[\[([^\]]+)\]\]/g, '$1')
         .trim()
 
       // Reset nesting if stack is more than current level
