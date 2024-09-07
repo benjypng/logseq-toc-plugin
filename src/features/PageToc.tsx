@@ -34,8 +34,7 @@ const PageToc = ({
         .trim()
 
       // Reset nesting if stack is more than current level
-      // @ts-ignore
-      while (stack.length > 0 && stack[stack.length - 1] >= level) {
+      while (stack.length > 0 && stack[stack.length - 1]! >= level) {
         stack.pop()
       }
       stack.push(level)
