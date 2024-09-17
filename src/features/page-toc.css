@@ -33,3 +33,18 @@
 .indent-4 { margin-left: 4.5em; }
 .indent-5 { margin-left: 6em; }
 .indent-6 { margin-left: 7.5em; }
+
+.icon-text-spacer {
+    margin-right: 0.25em; 
+}
+
+.button-light {
+  color: #0645ad;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.toc-item:hover .button-light {
+  opacity: 0.7 !important;
+  color: #0645ad; 
+}
