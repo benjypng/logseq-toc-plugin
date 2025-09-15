@@ -27,11 +27,20 @@ const PageToc = ({
       const level = item.content.split(' ')[0]!.length
       // Remove #, and other properties from the content
       const content = item.content
-        .replace(
+        ?.replace(
           /#powerblocks-button|#powerblocks|(.+?)::\s*([^\n]*)|^#+\s/g,
           '',
         )
-        .trim()
+        // Remove markdown links for 1, 2, and 3 parentheses
+        ?.replace(/\[([^\]]+)\]\([^()]+\)/g, '$1')
+        ?.replace(/\[([^\]]+)\]\(\([^()]+\)\)/g, '$1')
+        ?.replace(/\[([^\]]+)\]\(\(\([^()]+\)\)\)/g, '$1')
+        // remove logseq links (2 and 3 parentheses)
+        ?.replace(/\(\(\([^()]*\)\)\)/g, '')
+        ?.replace(/\(\([^()]*\)\)/g, '')
+        // Get first line and trim
+        ?.split('\n')[0]
+        ?.trim() ?? ''
 
       // Reset nesting if stack is more than current level
       while (stack.length > 0 && stack[stack.length - 1]! >= level) {
