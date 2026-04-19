@@ -10,44 +10,12 @@ export const getHeadersArr = (blocks: BlockEntity[]): HeaderInterface[] => {
 
   const findAllHeaders = (blocks: BlockEntity[]) => {
     for (const block of blocks) {
-      switch (true) {
-        case block.content.startsWith('# '):
-          headers.push({
-            content: block.content,
-            uuid: block.uuid,
-          })
-          break
-        case block.content.startsWith('## '):
-          headers.push({
-            content: block.content,
-            uuid: block.uuid,
-          })
-          break
-        case block.content.startsWith('### '):
-          headers.push({
-            content: block.content,
-            uuid: block.uuid,
-          })
-          break
-        case block.content.startsWith('#### '):
-          headers.push({
-            content: block.content,
-            uuid: block.uuid,
-          })
-          break
-        case block.content.startsWith('##### '):
-          headers.push({
-            content: block.content,
-            uuid: block.uuid,
-          })
-          break
-        case block.content.startsWith('###### '):
-          headers.push({
-            content: block.content,
-            uuid: block.uuid,
-          })
-          break
-        default:
+      const content = block.content
+      if (content && /^#{1,6} /.test(content)) {
+        headers.push({
+          content,
+          uuid: block.uuid,
+        })
       }
 
       if (block.children) findAllHeaders(block.children as BlockEntity[])

@@ -9,7 +9,7 @@ const PageToc = ({
   pageName: string
   data: HeaderInterface[]
 }) => {
-  if (data.length == 0) return
+  if (data.length == 0) return null
 
   const goToHeader = (uuid: string) => {
     logseq.Editor.scrollToBlockInPage(pageName, uuid, { replaceState: true })
@@ -53,7 +53,7 @@ const PageToc = ({
 
   return (
     <nav className="toc">
-      <div className="toc-header">{logseq.settings!.tocTitle}</div>
+      <div className="toc-header">{logseq.settings!.tocTitle as string}</div>
       <ul>{generateTOC()}</ul>
     </nav>
   )

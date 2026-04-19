@@ -3,8 +3,8 @@ import '@logseq/libs'
 import { BlockEntity } from '@logseq/libs/dist/LSPlugin'
 import { createRoot } from 'react-dom/client'
 
-import pageTocCss from './features/page-toc.css?raw'
 import PageToc from './features/PageToc'
+import pageTocCss from './features/page-toc.css?raw'
 import { getHeadersArr } from './libs/get-headers-arr'
 import { settings } from './settings'
 
