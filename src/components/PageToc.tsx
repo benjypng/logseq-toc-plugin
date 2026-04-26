@@ -17,15 +17,11 @@ const PageToc = ({
 
   const generateTOC = () => {
     const toc: ReactElement[] = []
-    // Check current number of levels
     const stack: number[] = []
 
-    // Generate table of contents
     data.forEach((item) => {
       if (!item.content) return
-      // Get number of #
-      const level = item.content.split(' ')[0]!.length
-      // Remove #, and other properties from the content
+      const level = item.level
       const content = item.content
         .replace(
           /#powerblocks-button|#powerblocks|(.+?)::\s*([^\n]*)|^#+\s/g,
@@ -33,7 +29,6 @@ const PageToc = ({
         )
         .trim()
 
-      // Reset nesting if stack is more than current level
       while (stack.length > 0 && stack[stack.length - 1]! >= level) {
         stack.pop()
       }
