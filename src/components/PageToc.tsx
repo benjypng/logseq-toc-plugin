@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 
 import { HeaderInterface } from '../libs/get-headers-arr'
+import { stripMarkdownLinks } from '../libs/strip-markdown-links'
 
 const PageToc = ({
   pageName,
@@ -22,12 +23,12 @@ const PageToc = ({
     data.forEach((item) => {
       if (!item.content) return
       const level = item.level
-      const content = item.content
-        .replace(
+      const content = stripMarkdownLinks(
+        item.content.replace(
           /#powerblocks-button|#powerblocks|(.+?)::\s*([^\n]*)|^#+\s/g,
           '',
-        )
-        .trim()
+        ),
+      ).trim()
 
       while (stack.length > 0 && stack[stack.length - 1]! >= level) {
         stack.pop()

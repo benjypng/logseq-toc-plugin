@@ -3,6 +3,7 @@ import '@logseq/libs'
 import { BlockEntity } from '@logseq/libs/dist/LSPlugin'
 
 import { getHeadersArr, HeaderInterface } from '../../libs/get-headers-arr'
+import { stripMarkdownLinks } from '../../libs/strip-markdown-links'
 
 export const setupPagebarToc = async () => {
   const getTocContainer = () =>
@@ -59,7 +60,7 @@ export const setupPagebarToc = async () => {
   const renderTocOverlay = (headers: HeaderInterface[], pageName: string) => {
     tocOverlay.innerHTML = headers
       .map((h) => {
-        const text = h.content.replace(/^#{1,6}\s+/, '')
+        const text = stripMarkdownLinks(h.content.replace(/^#{1,6}\s+/, ''))
         const indent = (h.level - 1) * 12
         return `<a data-uuid="${h.uuid}" data-page="${pageName}" style="display: block; padding-left: ${indent}px; color: var(--ls-link-text-color); text-decoration: none; cursor: pointer;">${text}</a>`
       })
