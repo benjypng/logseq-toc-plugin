@@ -70,7 +70,7 @@ export const setupPagebarToc = async () => {
       el.addEventListener('click', (e) => {
         const uuid = el.getAttribute('data-uuid')!
         const page = el.getAttribute('data-page')!
-        if ((e as MouseEvent).shiftKey) {
+        if ((e as MouseEvent).metaKey) {
           logseq.Editor.openInRightSidebar(uuid)
         } else {
           logseq.Editor.scrollToBlockInPage(page, uuid)
