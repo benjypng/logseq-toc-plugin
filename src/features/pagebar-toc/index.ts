@@ -5,19 +5,51 @@ import { BlockEntity } from '@logseq/libs/dist/LSPlugin'
 import { getHeadersArr, HeaderInterface } from '../../libs/get-headers-arr'
 
 export const setupPagebarToc = async () => {
-  const stickyStyle = parent.document.createElement('style')
-  stickyStyle.textContent = `
-    .ls-page-title + .flex.flex-row,
-    div.flex.flex-row.space-between {
-      position: sticky;
-      top: 0;
-      z-index: 99;
-      background: color-mix(in srgb, var(--ls-primary-background-color) 80%, transparent);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+  const getTocContainer = () =>
+    parent.document.getElementById('toc-container') ??
+    document.getElementById('toc-container')
+
+  const applyIconPinState = () => {
+    const container = getTocContainer()
+    if (!container) return
+
+    const row = container.closest('.flex.flex-row') as HTMLElement | null
+    if (!row) return
+
+    const scrollContainer = parent.document.getElementById(
+      'main-content-container',
+    )
+    const visibleTop = scrollContainer?.getBoundingClientRect().top ?? 0
+    const rowRect = row.getBoundingClientRect()
+
+    if (rowRect.bottom < visibleTop) {
+      const right =
+        parent.document.documentElement.clientWidth - rowRect.right
+      container.style.position = 'fixed'
+      container.style.top = `${visibleTop + 4}px`
+      container.style.right = `${right}px`
+      container.style.zIndex = '99'
+      container.style.background =
+        'color-mix(in srgb, var(--ls-primary-background-color) 80%, transparent)'
+      container.style.backdropFilter = 'blur(12px)'
+      container.style.setProperty('-webkit-backdrop-filter', 'blur(12px)')
+      container.style.borderRadius = '6px'
+    } else {
+      container.style.position = 'relative'
+      container.style.top = ''
+      container.style.right = ''
+      container.style.zIndex = ''
+      container.style.background = ''
+      container.style.backdropFilter = ''
+      container.style.removeProperty('-webkit-backdrop-filter')
+      container.style.borderRadius = ''
     }
-  `
-  parent.document.head.appendChild(stickyStyle)
+  }
+
+  parent.document.addEventListener('scroll', applyIconPinState, {
+    capture: true,
+    passive: true,
+  })
 
   const tocOverlay = parent.document.createElement('div')
   tocOverlay.id = 'toc-overlay'
@@ -49,15 +81,14 @@ export const setupPagebarToc = async () => {
   }
 
   const setTocVisibility = (visible: boolean) => {
-    const container =
-      parent.document.getElementById('toc-container') ??
-      document.getElementById('toc-container')
+    const container = getTocContainer()
     if (container) {
       container.style.display = visible ? '' : 'none'
     }
     if (!visible) {
       tocOverlay.style.display = 'none'
     }
+    applyIconPinState()
   }
 
   const updateToc = async (uuid: string): Promise<boolean> => {
