@@ -12,8 +12,12 @@ const PageToc = ({
 }) => {
   if (data.length == 0) return null
 
-  const goToHeader = (uuid: string) => {
-    logseq.Editor.scrollToBlockInPage(pageName, uuid, { replaceState: true })
+  const goToHeader = (uuid: string, shiftKey: boolean) => {
+    if (shiftKey) {
+      logseq.Editor.openInRightSidebar(uuid)
+    } else {
+      logseq.Editor.scrollToBlockInPage(pageName, uuid, { replaceState: true })
+    }
   }
 
   const generateTOC = () => {
@@ -38,7 +42,7 @@ const PageToc = ({
         <li
           key={item.uuid}
           className={`toc-item indent-${stack.length}`}
-          onClick={() => goToHeader(item.uuid)}
+          onClick={(e) => goToHeader(item.uuid, e.shiftKey)}
         >
           {content}
         </li>,

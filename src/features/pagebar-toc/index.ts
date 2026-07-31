@@ -67,10 +67,14 @@ export const setupPagebarToc = async () => {
       .join('')
 
     tocOverlay.querySelectorAll('a[data-uuid]').forEach((el) => {
-      el.addEventListener('click', () => {
+      el.addEventListener('click', (e) => {
         const uuid = el.getAttribute('data-uuid')!
         const page = el.getAttribute('data-page')!
-        logseq.Editor.scrollToBlockInPage(page, uuid)
+        if ((e as MouseEvent).shiftKey) {
+          logseq.Editor.openInRightSidebar(uuid)
+        } else {
+          logseq.Editor.scrollToBlockInPage(page, uuid)
+        }
         tocOverlay.style.display = 'none'
         const icon =
           parent.document.getElementById('toc-icon') ??
