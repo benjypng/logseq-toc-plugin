@@ -23,8 +23,7 @@ export const setupPagebarToc = async () => {
     const rowRect = row.getBoundingClientRect()
 
     if (rowRect.bottom < visibleTop) {
-      const right =
-        parent.document.documentElement.clientWidth - rowRect.right
+      const right = parent.document.documentElement.clientWidth - rowRect.right
       container.style.position = 'fixed'
       container.style.top = `${visibleTop + 4}px`
       container.style.right = `${right}px`
