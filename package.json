@@ -16,16 +16,12 @@
     "lint:precommit": "echo \"Running biome\" && bunx @biomejs/biome check --write . && echo \"Running tsc\" && tsc --noEmit"
   },
   "release": {
-    "branches": [
-      "main"
-    ],
+    "branches": ["main"],
     "plugins": [
       [
         "@semantic-release/github",
         {
-          "assets": [
-            "logseq-toc-plugin.zip"
-          ]
+          "assets": ["logseq-toc-plugin.zip"]
         }
       ]
     ]
