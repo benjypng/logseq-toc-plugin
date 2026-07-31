@@ -6,7 +6,35 @@ export interface HeaderInterface {
   level: number
 }
 
-export const getHeadersArr = (blocks: BlockEntity[]): HeaderInterface[] => {
+const UUID_REF_REGEX =
+  /(?:\[\[|\(\()([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})(?:\]\]|\)\))/g
+
+const resolveUuidRefs = async (content: string): Promise<string> => {
+  const matches = [...content.matchAll(UUID_REF_REGEX)]
+  let resolved = content
+
+  for (const match of matches) {
+    const uuid = match[1]!
+    const block = await logseq.Editor.getBlock(uuid)
+    const title = block?.content?.split('\n')[0]?.trim()
+
+    if (title) {
+      resolved = resolved.replace(match[0], title)
+      continue
+    }
+
+    const page = await logseq.Editor.getPage(uuid)
+    if (page) {
+      resolved = resolved.replace(match[0], page.originalName ?? page.name)
+    }
+  }
+
+  return resolved
+}
+
+export const getHeadersArr = async (
+  blocks: BlockEntity[],
+): Promise<HeaderInterface[]> => {
   const headers: HeaderInterface[] = []
 
   const findAllHeaders = (blocks: BlockEntity[]) => {
@@ -35,5 +63,11 @@ export const getHeadersArr = (blocks: BlockEntity[]): HeaderInterface[] => {
     }
   }
   findAllHeaders(blocks)
-  return headers
+
+  return Promise.all(
+    headers.map(async (header) => ({
+      ...header,
+      content: await resolveUuidRefs(header.content),
+    })),
+  )
 }

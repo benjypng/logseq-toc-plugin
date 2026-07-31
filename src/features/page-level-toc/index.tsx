@@ -32,7 +32,7 @@ export const setupPageLevelToc = () => {
 
       const pbt = await logseq.Editor.getPageBlocksTree(name)
       if (!pbt) return
-      const headers = getHeadersArr(pbt)
+      const headers = await getHeadersArr(pbt)
       if (!headers) return
       root.render(<PageToc pageName={name} data={headers} />)
 
@@ -43,7 +43,7 @@ export const setupPageLevelToc = () => {
 
         const pbt = await logseq.Editor.getPageBlocksTree(page.uuid)
         if (!pbt) return
-        const headers = getHeadersArr(pbt)
+        const headers = await getHeadersArr(pbt)
         if (!headers) return
         root.render(<PageToc pageName={name} data={headers} />)
       })

@@ -22,7 +22,7 @@ export const setupInlineToc = () => {
       const tocId = `toc_${uuid}_${slot}`
       const blk = await logseq.Editor.getBlock(uuid, { includeChildren: true })
       if (!blk || !blk.children) return
-      const headers = getHeadersArr(blk.children as BlockEntity[])
+      const headers = await getHeadersArr(blk.children as BlockEntity[])
       if (!headers) return
       const page = await logseq.Editor.getPage(blk.page.id)
       if (!page) return

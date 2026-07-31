@@ -108,7 +108,7 @@ export const setupPagebarToc = async () => {
       blocks = (blk.children as BlockEntity[]) ?? []
     }
 
-    const headers = getHeadersArr(blocks)
+    const headers = await getHeadersArr(blocks)
     renderTocOverlay(headers, uuid)
     return headers.length > 0
   }
